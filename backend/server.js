@@ -8,7 +8,12 @@ app.use(cors())
 app.use(express.json())
 
 app.use("/api/v1/movies", movies)
-app.use('*',(req,res)=>{
+
+app.get('/', (req, res) => {
+    res.send('Root route working!')
+});
+
+app.use('/{*any}',(req,res)=>{
     res.status(404).json({error: "not found"})
 })
 
